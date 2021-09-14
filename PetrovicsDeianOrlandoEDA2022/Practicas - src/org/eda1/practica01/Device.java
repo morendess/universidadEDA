@@ -3,6 +3,8 @@ package org.eda1.practica01;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+//
+
 public class Device implements Iterable<String>{
 	private static int numDevices=0; //contador de dispositivos...atributo estatico
 	private String name;

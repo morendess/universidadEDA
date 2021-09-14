@@ -3,7 +3,7 @@ package org.eda1.practica01;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+//
 public class User {
 	private String name;
 	private ArrayList<Device> devices;
