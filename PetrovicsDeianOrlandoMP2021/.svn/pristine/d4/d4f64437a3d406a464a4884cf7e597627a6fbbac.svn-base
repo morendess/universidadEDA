@@ -1,0 +1,83 @@
+package org.mp.sesionexamenmayo.p2;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
+
+public class Municipios {
+
+	private List<Municipio> municipios;
+
+	public Municipios(String municipios) {
+		super();
+		try {
+		BufferedReader br = new BufferedReader(new FileReader(new File(municipios)));
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void leerMunicipios(File municipios) throws Exception {
+	
+		FileReader fileReader=new FileReader(municipios);
+        BufferedReader bufferReader=new BufferedReader(fileReader);
+        bufferReader.readLine();
+	}
+	
+	public Municipio buscar(String municipio){
+		
+		for (Municipio municipio1 : municipios) {
+            if (municipio1.getMunicipio().equals(municipio1)) {
+                return municipio1;
+            }
+        }
+		
+		return null;
+		
+	}
+	
+	/**
+	 * 
+	 * @return total de habitantes
+	 */
+	
+	public long poblacionTotal(){
+		
+		long totalHabitantes = 0;
+
+        for (Municipio municipio : municipios) {
+            totalHabitantes += municipio.getHabitantes();
+        }
+
+        return totalHabitantes;
+	}
+
+	
+	public List<Municipio> municipiosProvincia(String provincia){
+		
+		// por hacer
+
+	}
+	
+	public ArrayList<Municipio> getMunicipios() {
+		
+		ArrayList<Municipio> municipiosTemp = new ArrayList<Municipio>(this.municipios);		
+		return municipiosTemp;
+	}
+
+	@Override
+	public String toString() {
+		return "Municipios [municipios=" + municipios + "]";
+	}
+	
+	
+	
+}

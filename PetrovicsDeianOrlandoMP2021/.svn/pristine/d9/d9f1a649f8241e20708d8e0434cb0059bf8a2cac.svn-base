@@ -1,0 +1,97 @@
+package org.mp.sesion01;
+
+public class Carta implements Comparable<Object> {
+
+	private String palo;
+	private int numero;
+	private int valor;
+
+	/**
+	 * • Constructor • @param palo • @param numero
+	 */
+
+	public Carta(String palo, int numero) {
+		this.palo = palo;
+		this.numero = numero;
+
+		if ("O" == palo) {
+			valor = numero;
+		} else if ("C" == palo) {
+			valor = 12 + numero;
+		} else if ("E" == palo) {
+			valor = 24 + numero;
+		} else if ("B" == palo) {
+			valor = 36 + numero;
+
+		}
+
+	}
+
+	/**
+	 * • Getter • @return palo
+	 */
+
+	public String getPalo() {
+		return palo;
+	}
+
+	/**
+	 * • Setter • @param palo
+	 */
+
+	public void setPalo(String palo) {
+		this.palo = palo;
+	}
+
+	/**
+	 * • Getter • @return numero
+	 */
+
+	public int getNumero() {
+		return numero;
+	}
+
+	/**
+	 * 
+	 * • Setter • @param numero
+	 */
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	/**
+	 * • Setter • @param valor
+	 */
+
+	public void setValor(int valor) {
+		this.valor = valor;
+	}
+
+	/**
+	 * • Getter • @return valor
+	 */
+
+	public int getValor() {
+		return valor;
+	}
+
+	/**
+	 * • (non-Javadoc) • @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
+
+	public int compareTo(Object obj) {
+
+		Carta other = (Carta) obj;
+
+		if (valor < other.getValor()) {
+			return -1;
+		}
+		if (valor > other.getValor()) {
+			return 1;
+		}else 
+			return 0;
+	
+	}
+
+}
