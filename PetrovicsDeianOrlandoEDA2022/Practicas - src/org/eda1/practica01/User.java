@@ -3,7 +3,7 @@ package org.eda1.practica01;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
-//
+
 public class User {
 	private String name;
 	private ArrayList<Device> devices;
@@ -12,6 +12,11 @@ public class User {
 		//Si name == null se lanza excepcion de tipo RuntimeException()
 		//3 lineas
 		//...
+		if(name == null) {
+			
+			throw new RuntimeException("El atributo name no puede ser nulo");
+			
+		}
 		this.name = name.trim();
 		this.devices = new ArrayList<Device>();
 	}
@@ -32,11 +37,11 @@ public class User {
 		//1 for()
 		//...
 
-		//		for (Device dev : devs) {
-		//			if(this.devices.contains(dev)) continue;
-		//			this.devices.add(dev);
-		//		}
-		//		
+				for (Device dev : devs) {
+					if(this.devices.contains(dev)) continue;
+					this.devices.add(dev);
+				}
+		
 		return true;
 	}
 
@@ -59,8 +64,10 @@ public class User {
 			return false;
 		}
 		while (scan.hasNextLine()) {
-			//3 lineas
-			//...
+			//3 lines o
+			line = scan.nextLine();
+			
+			
 		}
 		scan.close();
 		return true;
@@ -70,6 +77,7 @@ public class User {
 		int pos = this.devices.indexOf(dev);
 		//2 lineas
 		//...
+		if(pos == -1) return false;
 		return true;
 	}
 
