@@ -42,7 +42,7 @@ public class Device implements Iterable<String>{
 		//Haced uso del metodo split(" ") para segmentar la frase en palabras, eliminando los espacios en blanco 
 		for (String string : msg.toLowerCase().split(" ")) {
 			if(string.isEmpty()) continue;
-			if(string.contains(string)) continue;
+			if(words.contains(string)) continue;
 			words.add(string);
 		}
 

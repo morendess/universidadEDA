@@ -66,7 +66,7 @@ public class User {
 		while (scan.hasNextLine()) {
 			//3 lines o
 			line = scan.nextLine();
-			
+			this.sendMessage(dev, line);
 			
 		}
 		scan.close();
@@ -78,6 +78,7 @@ public class User {
 		//2 lineas
 		//...
 		if(pos == -1) return false;
+		dev.sendMessage(msg);
 		return true;
 	}
 
@@ -103,6 +104,10 @@ public class User {
 	public ArrayList<String> getOrderedWords() {
 		ArrayList<String> result = new ArrayList<String>();
 		//1 for()
+		
+		for (String string : result) {
+			
+		}
 
 		result.sort(null); //que metodo de ordenacion estamos utilizando aqui...
 		return result;
