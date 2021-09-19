@@ -147,7 +147,7 @@ public class Practica01JUnit5 {
 		assertEquals("1.- iphone 11: este es un mensaje de \n" +
 					 "2.- motorola mg8: este es un segundo mensaje \n",
 	 			 	 u1.getWords());
-		
+	
 		assertEquals("[de, es, este, mensaje, segundo, un]", u1.getOrderedWords().toString());
 		
 		u1.clear();

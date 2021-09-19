@@ -2,6 +2,7 @@ package org.eda1.practica01;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class User {
@@ -9,21 +10,21 @@ public class User {
 	private ArrayList<Device> devices;
 
 	public User(String name) {
-		//Si name == null se lanza excepcion de tipo RuntimeException()
-		//3 lineas
-		//...
-		if(name == null) {
-			
+		// Si name == null se lanza excepcion de tipo RuntimeException()
+		// 3 lineas
+		// ...
+		if (name == null) {
+
 			throw new RuntimeException("El atributo name no puede ser nulo");
-			
+
 		}
 		this.name = name.trim();
 		this.devices = new ArrayList<Device>();
 	}
 
 	public void clear() {
-		//1 for()
-		//...
+		// 1 for()
+		// ...
 
 		for (Device dev : devices) {
 			dev.clear();
@@ -33,15 +34,17 @@ public class User {
 	}
 
 	public boolean addDevices(Device... devs) {
-		if (devs == null) return false;
-		//1 for()
-		//...
+		if (devs == null)
+			return false;
+		// 1 for()
+		// ...
 
-				for (Device dev : devs) {
-					if(this.devices.contains(dev)) continue;
-					this.devices.add(dev);
-				}
-		
+		for (Device dev : devs) {
+			if (this.devices.contains(dev))
+				continue;
+			this.devices.add(dev);
+		}
+
 		return true;
 	}
 
@@ -50,24 +53,25 @@ public class User {
 	}
 
 	public boolean loadMessages(Device dev, String fileName) {
-		//Analizar la estructura de este tipico metodo de carga de datos a partir de un archivo de texto
-		//Por que es necesario el bloque try{}catch(){}
-
+		// Analizar la estructura de este tipico metodo de carga de datos a partir de un
+		// archivo de texto
+		// Por que es necesario el bloque try{}catch(){}
 
 		Scanner scan = null;
-		String line; 
+		String line;
 		int pos = this.devices.indexOf(dev);
-		if (pos == -1) return false;
+		if (pos == -1)
+			return false;
 		try {
 			scan = new Scanner(new File(fileName));
-		}catch(Exception e) {
+		} catch (Exception e) {
 			return false;
 		}
 		while (scan.hasNextLine()) {
-			//3 lines o
+			// 3 lines o
 			line = scan.nextLine();
 			this.sendMessage(dev, line);
-			
+
 		}
 		scan.close();
 		return true;
@@ -75,41 +79,68 @@ public class User {
 
 	public boolean sendMessage(Device dev, String msg) {
 		int pos = this.devices.indexOf(dev);
-		//2 lineas
-		//...
-		if(pos == -1) return false;
+		// 2 lineas
+		// ...
+		if (pos == -1)
+			return false;
 		dev.sendMessage(msg);
 		return true;
 	}
 
 	public void substitute(String word1, String word2) {
-		//Sustituimos en todos los dispositivos...
-		//1 for()
+		// Sustituimos en todos los dispositivos...
+		// 1 for()
+
+		for (Device device : devices) {
+
+			device.substitute(word1, word2);
+
+		}
+
 	}
 
 	public boolean contains(String word) {
-		//Buscamos en todos y cada uno de los dispositivos
-		//1 for()
-		//...
+		// Buscamos en todos y cada uno de los dispositivos
+		// 1 for()
+		// ...
+
+		for (Device device : devices) {
+
+			if (device.contains(word)) {
+
+				return true;
+
+			}
+
+		}
+
 		return false;
 	}
 
 	public String getWords() {
 		String result = "";
-		//1 for()
-		//...
+		// 1 for()
+		// ...
+		
+		
+		for (Device dev : devices) {
+			result += dev.toString()+": "+dev.words.toString().replace(",", "").replace("[", "").replace("]", "")+" \n";
+		}
+
 		return result;
 	}
 
 	public ArrayList<String> getOrderedWords() {
 		ArrayList<String> result = new ArrayList<String>();
-		//1 for()
-		
+		// 1 for()
+
 		for (String string : result) {
+			
+			result.add(string);
 			
 		}
 
-		result.sort(null); //que metodo de ordenacion estamos utilizando aqui...
+		result.sort(null); // que metodo de ordenacion estamos utilizando aqui...
 		return result;
 	}
 
